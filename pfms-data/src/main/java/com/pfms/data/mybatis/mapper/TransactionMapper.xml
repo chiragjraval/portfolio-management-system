@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pfms.dao.transaction.TransactionDao">
+	
+	<!-- Result Maps -->
+	<resultMap id="TransactionMap" type="Transaction" >
+		<id property="id" column="ID" />
+		<result property="type" column="TYPE" />
+		<result property="quantity" column="QUANTITY" />
+		<result property="price" column="PRICE" />
+		<result property="clientId" column="CLIENT_ID" />
+		<result property="executionDate" column="EXECUTION_DATE" />
+		<result property="settlementDate" column="SETTLEMENT_DATE" />
+	</resultMap>
+
+	<!-- Queries -->
+	<select id="getAllTransactions" resultMap="TransactionMap">
+		SELECT 
+			*
+		FROM
+			TRANSACTIONS
+	</select>
+	
+	<select id="getAllTransactionsForClient" resultMap="TransactionMap">
+		SELECT 
+			*
+		FROM
+			TRANSACTIONS
+		WHERE
+			CLIENT_ID=#{clientId}
+	</select>
+	
+	<select id="getAllTransactionsForType" resultMap="TransactionMap">
+		SELECT 
+			*
+		FROM
+			TRANSACTIONS
+		WHERE
+			TYPE=#{type}
+	</select>
+	
+</mapper>
