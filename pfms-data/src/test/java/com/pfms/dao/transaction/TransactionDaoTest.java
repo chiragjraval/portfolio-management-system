@@ -37,8 +37,8 @@ public class TransactionDaoTest {
 	public void setUp() throws Exception {
 		if (!isSetupDone) {
 			ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-			databasePopulator.addScript(new ClassPathResource("/com/pfms/dao/transaction/create-table.sql"));
-			databasePopulator.addScript(new ClassPathResource("/com/pfms/dao/transaction/insert-data.sql"));
+			databasePopulator.addScript(new ClassPathResource("com/pfms/dao/transaction/create-table.sql"));
+			databasePopulator.addScript(new ClassPathResource("com/pfms/dao/transaction/insert-data.sql"));
 			DatabasePopulatorUtils.execute(databasePopulator, pfmsDataSource);
 			isSetupDone = true;
 		}

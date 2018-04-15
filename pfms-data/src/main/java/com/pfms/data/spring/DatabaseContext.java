@@ -38,7 +38,6 @@ public class DatabaseContext {
 	@Bean(name="pfmsSqlSessionFactory")
 	public SqlSessionFactoryBean getPfmsSqlSessionFactory() {
 		ClassPathResource classPathResource = new ClassPathResource("com/pfms/data/mybatis/mybatis-config.xml");
-		
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(getPfmsDataSource());
 		sqlSessionFactoryBean.setConfigLocation(classPathResource);
