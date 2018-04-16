@@ -51,7 +51,6 @@ public class TransactionRepositoryTest {
         Assert.assertEquals(3, transactions.size());
     }
 
-
     @Test
     public void testGetAllTransactionsForType() {
         List<Transaction> transactions = transactionRepository.findByType(TransactionType.BUY);
