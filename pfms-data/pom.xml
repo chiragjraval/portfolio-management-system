@@ -14,6 +14,9 @@
 
     <url>http://maven.apache.org</url>
     <properties>
+        <h2.version>1.4.187</h2.version>
+        <hibernat.entitymanager.version>5.2.16.Final</hibernat.entitymanager.version>
+        <spring.data.version>1.11.11.RELEASE</spring.data.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -24,6 +27,23 @@
             <groupId>com.pfms</groupId>
             <artifactId>pfms-config</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernat.entitymanager.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.version}</version>
         </dependency>
     </dependencies>
 
