@@ -1,61 +1,59 @@
 package com.pfms.data.transaction;
 
-import javax.persistence.*;
-import java.util.Date;
+import com.datastax.driver.core.DataType;
+import org.springframework.data.cassandra.core.mapping.CassandraType;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
-@Entity
-@Table(name = "TRANSACTION")
+import java.util.Date;
+import java.util.UUID;
+
+@Table(value = "transaction")
 public class Transaction {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "ID")
-    private Integer id;
+    @PrimaryKey
+    private UUID id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "TYPE")
+    @CassandraType(type = DataType.Name.TEXT)
+    @Column
     private TransactionType type;
 
-    @Column(name = "QUANTITY")
+    @Column
     private Integer quantity;
 
-    @Column(name = "PRICE")
+    @Column
     private Double price;
 
-    @Column(name = "CLIENT_ID")
+    @Column
     private String clientId;
 
-    @Column(name = "EXECUTION_DATE")
+    @Column
     private Date executionDate;
 
-    @Column(name = "SETTLEMENT_DATE")
+    @Column
     private Date settlementDate;
 
     @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + (id ^ (id >>> 32));
-        return result;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Transaction that = (Transaction) o;
+
+        return id.equals(that.id);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Transaction other = (Transaction) obj;
-        return id.equals(other.id);
+    public int hashCode() {
+        return id.hashCode();
     }
 
-    public Integer getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

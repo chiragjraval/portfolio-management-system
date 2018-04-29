@@ -3,38 +3,25 @@ package com.pfms.data.repository;
 import com.pfms.data.spring.dbtest.DatabaseTestContext;
 import com.pfms.data.transaction.Transaction;
 import com.pfms.data.transaction.TransactionType;
+import org.cassandraunit.spring.CassandraDataSet;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.jdbc.datasource.init.DatabasePopulatorUtils;
-import org.springframework.jdbc.datasource.init.ResourceDatabasePopulator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
-@ContextConfiguration(classes = {DatabaseTestContext.class})
-@TestPropertySource(properties = {"ENV=test"})
 @RunWith(SpringJUnit4ClassRunner.class)
-public class TransactionRepositoryTest {
-
-    @Autowired
-    private DriverManagerDataSource pfmsDataSource;
+@ContextConfiguration(classes = {DatabaseTestContext.class})
+@CassandraDataSet(value = "com/pfms/data/repository/transaction-data.cql", keyspace = "pfms")
+@TestPropertySource(properties = {"ENV=test"})
+public class TransactionRepositoryTest extends BaseRepositoryTest {
 
     @Autowired
     private TransactionRepository transactionRepository;
-
-    @Before
-    public void setUp() {
-        ResourceDatabasePopulator databasePopulator = new ResourceDatabasePopulator();
-        databasePopulator.addScript(new ClassPathResource("com/pfms/data/repository/insert-data.sql"));
-        DatabasePopulatorUtils.execute(databasePopulator, pfmsDataSource);
-    }
 
     @Test
     public void testGetAllTransactions() {
