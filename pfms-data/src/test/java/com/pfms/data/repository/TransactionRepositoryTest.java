@@ -1,6 +1,6 @@
 package com.pfms.data.repository;
 
-import com.pfms.data.spring.dbtest.DatabaseTestContext;
+import com.pfms.data.spring.DatabaseContext;
 import com.pfms.data.transaction.Transaction;
 import com.pfms.data.transaction.TransactionType;
 import org.cassandraunit.spring.CassandraDataSet;
@@ -8,17 +8,16 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {DatabaseTestContext.class})
+@PfmsTestRepository
+@SpringJUnitConfig(classes = {DatabaseContext.class})
 @CassandraDataSet(value = "com/pfms/data/repository/transaction-data.cql", keyspace = "pfms")
-@TestPropertySource(properties = {"ENV=test"})
-public class TransactionRepositoryTest extends BaseRepositoryTest {
+public class TransactionRepositoryTest {
 
     @Autowired
     private TransactionRepository transactionRepository;
