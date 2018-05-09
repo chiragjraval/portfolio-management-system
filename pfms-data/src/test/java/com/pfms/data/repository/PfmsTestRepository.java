@@ -13,11 +13,11 @@ import java.lang.annotation.Target;
 
 @Target(value = ElementType.TYPE)
 @Retention(value = RetentionPolicy.RUNTIME)
-@EmbeddedCassandra
+@EmbeddedCassandra(timeout = 120000L)
 @TestExecutionListeners(listeners = {
         CassandraUnitDependencyInjectionTestExecutionListener.class,
         DependencyInjectionTestExecutionListener.class}
 )
-@TestPropertySource({"classpath:com/pfms/config/properties/test/test.properties"})
+@TestPropertySource(properties = {"ENV=test"}, value = {"classpath:com/pfms/config/properties/test/test.properties"})
 public @interface PfmsTestRepository {
 }

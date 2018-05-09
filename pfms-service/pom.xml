@@ -6,6 +6,7 @@
         <artifactId>pfms</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
+
     <artifactId>pfms-service</artifactId>
     <name>pfms-service</name>
 
@@ -22,8 +23,27 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
+            <groupId>com.pfms</groupId>
+            <artifactId>pfms-data</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <type>test-jar</type>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring.boot.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test</artifactId>
             <version>${spring.boot.version}</version>
         </dependency>
     </dependencies>

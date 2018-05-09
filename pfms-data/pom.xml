@@ -48,7 +48,6 @@
             <groupId>org.cassandraunit</groupId>
             <artifactId>cassandra-unit-spring</artifactId>
             <version>${cassandra.unit.spring.version}</version>
-            <scope>test</scope>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -57,6 +56,10 @@
                 <exclusion>
                     <groupId>org.springframework</groupId>
                     <artifactId>spring-test</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
