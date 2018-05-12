@@ -1,8 +1,7 @@
 package com.pfms.service.endpoint;
 
-import com.pfms.data.repository.PfmsTestRepository;
-import com.pfms.data.spring.DatabaseContext;
-import com.pfms.data.transaction.Transaction;
+import java.util.List;
+
 import org.cassandraunit.spring.CassandraDataSet;
 import org.junit.Assert;
 import org.junit.Test;
@@ -12,11 +11,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.xml.ws.Response;
-import java.util.List;
+import com.pfms.data.repository.PfmsTestRepository;
+import com.pfms.data.spring.DatabaseContext;
+import com.pfms.data.transaction.Transaction;
 
 @RunWith(SpringRunner.class)
 @PfmsTestRepository
